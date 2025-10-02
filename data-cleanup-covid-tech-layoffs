@@ -16,7 +16,7 @@ SELECT * FROM var_layoffs;
 #SELECT *
 #FROM var_layoffs;
 
--- REMOVE DUPLICATES BY USING WINDOWS FUNCTION 'ROW_NUMBER' WHICH ASSIGNS A SEQUENTIAL NUMBER TO UNIQUE ROWS IN EACH ASSIGNED PARTITION.
+-- REMOVE DUPLICATES... BY USING WINDOWS FUNCTION 'ROW_NUMBER' WHICH ASSIGNS A SEQUENTIAL NUMBER TO UNIQUE ROWS IN EACH ASSIGNED PARTITION.
 SELECT *,
 ROW_NUMBER() OVER(
 PARTITION BY 
@@ -101,4 +101,79 @@ DELETE
 FROM layoffs_staging
 WHERE row_num > 1;
 
--- STANDARDIZE DATA ...
+-- STANDARDIZE DATA ... TRIMMING DATA / CONVERT THE DATE 
+
+-- TRIMMING THE COMPANY NAME
+SELECT company, TRIM(company)
+FROM layoffs_staging;
+
+UPDATE layoffs_staging
+SET company = TRIM(company);
+
+-- SEARCHING THROUGH COLUMNS FOR ISSUES
+SELECT *
+FROM layoffs_staging;
+
+SELECT DISTINCT country
+FROM layoffs_staging
+ORDER BY 1;
+
+-- CONVERT DATE FROM TEXT TYPE TO DATE TYPE
+SELECT `date`, str_to_date(`date`, '%m/%d/%Y')
+FROM layoffs_staging;
+
+UPDATE layoffs_staging
+SET `date` = str_to_date(`date`, '%m/%d/%Y');
+
+ALTER TABLE layoffs_staging
+MODIFY COLUMN `date` DATE;
+
+-- REMOVE EXTRA CHARACTERS FROM END OF DATA
+SELECT country, TRIM(TRAILING '-' FROM country)
+FROM layoffs_staging
+WHERE country like '%Canada%';
+
+UPDATE layoffs_staging
+SET country = TRIM(TRAILING '-' FROM country)
+WHERE country like '%Canada%';
+
+-- NULLS ...
+SELECT *
+FROM layoffs_staging;
+
+-- REMOVED ROWS WITH NO LAYOFF DATA
+SELECT *
+#DELETE
+FROM layoffs_staging
+WHERE (total_laid_off IS NULL OR total_laid_off = '')
+AND (percentage_laid_off IS NULL OR percentage_laid_off = ''); 
+
+SELECT *
+FROM layoffs_staging
+WHERE industry IS NULL
+	OR industry = '';
+    
+SELECT company, industry
+FROM layoffs_staging
+WHERE company in ('Eyeo', 'Appsmith', '&Open');
+
+SELECT *
+FROM layoffs_staging t1
+JOIN layoffs_staging t2
+	ON t1.company = t2.company
+    and t1.location = t2.location
+WHERE (t1.industry = '' OR t1.industry IS NULL)
+AND t2.industry != '';
+
+-- REPLACING BLANKS WITH NULLS
+#UPDATE
+#SET
+#WHERE
+
+-- REMOVE ROW_NUM
+ALTER TABLE layoffs_staging
+DROP COLUMN row_num;
+
+SELECT *
+FROM layoffs_staging;
+
