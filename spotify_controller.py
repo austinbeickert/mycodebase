@@ -4,10 +4,10 @@ from spotipy.oauth2 import SpotifyOAuth
 debug = 1
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
-    client_id="fc51f5d456fc44cfb4da9fd831b0d309",
-    client_secret="a6d7ab2fb06946d69f463193cdf9d3fb",
-    redirect_uri="http://127.0.0.1:8888/callback",
-    scope="user-modify-playback-state user-read-playback-state"
+    client_id="",
+    client_secret="",
+    redirect_uri="",
+    scope=""
 ))
 
 def play_playlist(playlist_uri):
@@ -35,4 +35,5 @@ def pause_playlist():
 
 if debug:
     link = 'https://open.spotify.com/album/0ZbnBDVUkpegVOfgPFr1wr?si=flKonIl0TLSqbYIpTi5cVA'
+
     play_playlist(link)
