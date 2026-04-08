@@ -39,5 +39,5 @@ This controller works in tandem with playlist_loader.py and the Spotify API to p
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------   
 
-#The Red Aisle
+##### The Red Aisle
 This is the beginning of a data scraping program using Target’s API, called “The Red Aisle.” Currently, it returns product information for a specific item from a specific ZIP code. This can be expanded with filters, automation, and a GUI to generate alerts for new deals.
