@@ -3,17 +3,6 @@ Hello, this is my collection of personal coding projects and a detailed explanat
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-##### data-cleanup
-This is a basic data cleanup example done in SQL. These cleaned tables can now be easily analyzed in tools like Tableau.
-
-It includes:
-- creating backup raw-data tables
-- converting dates
-- trimming whitespace and special characters
-- converting values into readable, analysis-friendly formats
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 ##### Dark Souls: The Musical
 Dark Souls is my favorite game - I've played it hundreds of times. Recently, I created a playlist that loosely pairs relevant songs with where I am in the game. For example: Iron Man by Black Sabbath plays during the segment where your player fights an Iron Giant. I first did this by timing myself taking a specific, consistent route in the game and then finding relevant songs that fit in length. However, sometimes I'd accidentally die, need to retrace my steps, or take a pause. I also didn't want to manually control the music after each boss, so I created this mod to handle that for me.
 
@@ -41,3 +30,16 @@ This controller works in tandem with playlist_loader.py and the Spotify API to p
 
 ##### The Red Aisle
 This is the beginning of a data scraping program using Target’s API, called “The Red Aisle.” Currently, it returns product information for a specific item from a specific ZIP code. This can be expanded with filters, automation, and a GUI to generate alerts for new deals.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+##### data-cleanup
+This is a basic data cleanup example done in SQL. These cleaned tables can now be easily analyzed in tools like Tableau.
+
+It includes:
+- creating backup raw-data tables
+- converting dates
+- trimming whitespace and special characters
+- converting values into readable, analysis-friendly formats
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
