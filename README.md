@@ -1,5 +1,5 @@
 # mycodebase
-Hello, this is my collection of personal coding projects and a detailed explanation of how they work.
+Hello, this is an overview of some of my smaller personal coding projects and an explanation of how they work
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
